@@ -1,4 +1,5 @@
 import requests
+import json
 from flask import Flask
 
 app = Flask(__name__)
@@ -9,8 +10,9 @@ def index():
 
 @app.route('/testReq')
 def testReq():
-    bla = requests.get("https://httpbin.org/get")
-    print(bla.url)
+    jsonResponse = requests.get("http://localhost:8080/api/listElements").json()
+    print(jsonResponse["_embedded"]["listElements"][0]["name"])
+
     return "succesfull get"
 
 if __name__ == "__main__":
