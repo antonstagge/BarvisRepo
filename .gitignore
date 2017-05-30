@@ -106,7 +106,7 @@ ENV/
 .settings/
  
 # Intellij
-.idea/
+client_barvis/.idea/
 *.iml
 *.iws
  
@@ -116,3 +116,5 @@ ENV/
 # Maven
 log/
 target/
+
+
