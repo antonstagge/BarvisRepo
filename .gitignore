@@ -106,7 +106,7 @@ ENV/
 .settings/
  
 # Intellij
-client_barvis/.idea/
+.idea/
 *.iml
 *.iws
  
