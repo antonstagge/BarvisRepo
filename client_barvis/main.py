@@ -1,19 +1,17 @@
 import requests
-import json
-from flask import Flask
+import os
+from threading import Thread
 
-app = Flask(__name__)
+def startWebsite():
+    print ("got it")
+    if __name__ == "__main__":
+        cwd = os.path.join(os.getcwd(), "website.py")
+        os.system('{} {}'.format('python', cwd))
 
-@app.route('/')
-def index():
-    return "This is the homepage"
 
-@app.route('/testReq')
-def testReq():
-    jsonResponse = requests.get("http://localhost:8080/api/listElements").json()
-    print(jsonResponse["_embedded"]["listElements"][0]["name"])
-
-    return "succesfull get"
-
-if __name__ == "__main__":
-    app.run(debug=True)
+websiteThread = Thread(target=startWebsite)
+websiteThread.start()
+# DO stuff here
+print ("kom hit")
+#
+websiteThread.join()
