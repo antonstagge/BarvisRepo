@@ -14,4 +14,5 @@ def req():
 
     return "succesfull get"
 
-app.run(debug=True)
+def run():
+    app.run(debug=False)
