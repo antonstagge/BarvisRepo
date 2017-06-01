@@ -18,12 +18,13 @@ def startWebsite():
 
 
 def speak(text):
-    newText = text.encode("utf-8")
+    newText = str(text)
     os.system("say " + newText)
 
 
 def listen(timeout):
     with speech_recognition.Microphone() as source:
+        recognizer.adjust_for_ambient_noise(source, 0.5)
         print "listening"
         try:
             audio = recognizer.listen(source, timeout=timeout)
@@ -44,13 +45,9 @@ def listen(timeout):
 def waitForBarvis():
     while True:
         prompt = listen(1)
-        words = prompt.split(' ')
-        barvis = False
-        for word in words:
-            if word == "barbies" or word == "Barbies":
-                barvis = True
-        if barvis:
-            speak("Vad vill du?")
+        print prompt
+        if "Barbies" in prompt or "Paris" in prompt or "Buddies" in prompt:
+            speak("Vad kan jag hjälpa dig med?")
             command = listen(5)
             if command == "":
                 continue
